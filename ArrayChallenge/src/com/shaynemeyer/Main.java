@@ -1,4 +1,5 @@
 package com.shaynemeyer;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -33,13 +34,34 @@ public class Main {
     }
 
     public static void printArray(int[] array) {
-
+        for(int i=0, arrLen = array.length; i < arrLen; i++) {
+            System.out.println("Element " + i + " contents " + array[i]);
+        }
     }
 
     public static int[] sortIntegers(int[] array){
-        int[] result = new int[array.length];
+//        int[] sortedArray = new int[array.length];
+//        for(int i=0; i < array.length; i++) {
+//            sortedArray[i] = array[i];
+//        }
 
-        return result;
+        int[] sortedArray = Arrays.copyOf(array, array.length);
+
+        boolean flag = true;
+        int temp;
+        while (flag) {
+            flag=false;
+            for (int i=0; i<sortedArray.length-1; i++) {
+                if(sortedArray[i] < sortedArray[i + 1]) {
+                    temp = sortedArray[i];
+                    sortedArray[i] = sortedArray[i+1];
+                    sortedArray[i+1] = temp;
+                    flag=true;
+                }
+            }
+        }
+
+        return sortedArray;
     }
 
 }
